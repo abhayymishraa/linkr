@@ -1,81 +1,68 @@
-# Turborepo starter
+# <div> Linkr <div>
+This project is a powerful automation platform, much like Zapier, designed for seamless integration and task automation. Built within a Turborepo setup, it offers modular and scalable architecture, enabling efficient scaling and code sharing across multiple services.
 
-This is an official starter Turborepo.
 
-## Using this example
+### Key Features
+1. Scalable Architecture: Built for resilience and growth, utilizing the best of Node.js and Express for backend robustness.
+2. Advanced Data Handling: Integrated with Kafka for message queuing, ensuring smooth and efficient handling of high-throughput tasks.
+3. Database Flexibility: Uses PostgreSQL for reliable data storage, managed seamlessly with Prisma ORM.
+4. Modern Frontend: Leverages Next.js for responsive, high-performing user interfaces.
 
-Run the following command:
+## Architecture
+![Alt text](./images/1.png)
 
-```sh
-npx create-turbo@latest
+#### Database Architecture
+![Alt text](./images/2.png)
+
+
+
+## Installation
+
+Use the package manager [npm](https://www.npmjs.com/) to install dependency.
+
+```bash
+npm install
 ```
 
-## What's inside?
+copy all .env.example to .env
 
-This Turborepo includes the following packages/apps:
+Start Kafka and Postrgres locally docker
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
+```bash
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword  -d postgres
 ```
-cd my-turborepo
-pnpm build
+for kafka 
+
+```bash
+docker run -p 9092:9092 -d  apache/kafka:3.7.1  
+```
+create a event by exec in docker container in kafka of name  
+```
+zap-events
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
+To start the repo go to prisma and genrate client 
+```javascript
+   cd packages/database 
 ```
-cd my-turborepo
-pnpm dev
+Run 
 ```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
+npm run db:push
+npm run db:generate
+npm run db:seed
 ```
-cd my-turborepo
-npx turbo login
+Finally to run 
+```
+npm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Contributing
 
-```
-npx turbo link
-```
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-## Useful Links
+Please make sure to update tests as appropriate.
 
-Learn more about the power of Turborepo:
+## License
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
