@@ -1,0 +1,24 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
+    "start": "node dist/index.js",
+    "dev": "npm run build  && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/common": "*",
+    "@repo/database": "*",
+    "@solana/web3.js": "^1.95.4",
+    "@types/nodemailer": "^6.4.16",
+    "dotenv": "^16.4.5",
+    "kafkajs": "^2.2.4",
+    "nodemailer": "^6.9.16",
+    "resend": "^4.0.1-alpha.0"
+  }
+}
