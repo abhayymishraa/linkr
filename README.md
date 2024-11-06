@@ -1,4 +1,5 @@
-# <div> Linkr <div>
+# <div align="center"> Linkr <div>
+
 This project is a powerful automation platform, much like Zapier, designed for seamless integration and task automation. Built within a Turborepo setup, it offers modular and scalable architecture, enabling efficient scaling and code sharing across multiple services.
 
 
